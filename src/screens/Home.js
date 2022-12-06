@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { HexGrid, Layout, Hexagon, Pattern, Path, Hex, GridGenerator} from 'react-native-hexgrid';
-import {View, Text, ScrollView, Button} from "react-native";
+import {View, Text, ScrollView, Button, Alert} from "react-native";
+import axios from "axios";
 
 
 export default function Home({AppState, navigation}) {
@@ -18,7 +19,7 @@ export default function Home({AppState, navigation}) {
             tempHexes[i] = currentHex;
         }
         setHexagons(tempHexes);
-    }, [])
+    }, [currentBoard])
 
 
     const style = {
@@ -47,6 +48,33 @@ export default function Home({AppState, navigation}) {
         navigation.navigate("Edit");
     }
 
+    const saveBoard = () => {
+        let tempValues = [];
+        for (let i = 0; i < hexagons.length; i++) {
+            let tempHex = {...hexagons[i]};
+            tempValues.push(tempHex.fill)
+        }
+        Alert.prompt(
+            "Board Name",
+            "Name your masterpiece!",
+            [
+                {
+                    text: "Cancel",
+                    onPress: () => navigation.navigate("Home"),
+                    style: "cancel"
+                },
+                {
+                    text: "OK",
+                    onPress: boardName => {
+                        let boardObj = {name: boardName, values: tempValues}
+                        axios.post("http://192.168.0.41:8000/api/gameBoards", boardObj)
+                    }
+                }
+            ],
+            "plain-text"
+        )
+    }
+
 
     return (
         <View style={{height: 700}}>
@@ -59,8 +87,8 @@ export default function Home({AppState, navigation}) {
                         minWidth: 1200
                     }}>
                 <ScrollView horizontal={true} minWidth={1200}>
-                    <HexGrid style={style} width={1200} height={800} viewBox="-10 -18 100 100">
-                        <Layout size={{x:4.1, y:4.1}} flat={true} spacing={1.06} origin={{x:0, y:0}}>
+                    <HexGrid style={style} width={1200} height={800} viewBox="-9.5 -16 100 100">
+                        <Layout size={{x:4.0, y:4.0}} flat={true} spacing={1.06} origin={{x:0, y:0}}>
                             {hexagons.map((hexagon, index) => {
                                 return(
                                     <Hexagon style={{stroke: "rgb(40, 40, 40)", strokeWidth: .2}} key={index} id={hexagon.id} onPress={(e) => openEdit(hexagon.id)} fill={hexagon.fill} q={hexagon.q} r={hexagon.r} s={hexagon.s}></Hexagon>
@@ -70,8 +98,9 @@ export default function Home({AppState, navigation}) {
                     </HexGrid>
                 </ScrollView>
             </View>
-            <View style={{display: "flex", paddingRight: 40, paddingTop: 20, flexDirection: "row", width: "100%", justifyContent: "flex-end"}}>
+            <View style={{display: "flex", paddingRight: 10, paddingLeft: 10, position: "absolute", bottom: 30, flexDirection: "row", width: "100%", justifyContent: "space-between"}}>
                 <Button onPress={(e)=>resetHexes()} title="Reset" color={"red"}/>
+                <Button onPress={(e)=>saveBoard()} title="Save Board" color={"green"}/>
             </View>
         </View>
     )

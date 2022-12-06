@@ -14,6 +14,7 @@ export default function Edit({AppState, navigation}){
         currentHex.fill = color;
         tempHexes[singleHex.id] = currentHex;
         setHexagons(tempHexes);
+
         navigation.navigate("Home");
     }
 

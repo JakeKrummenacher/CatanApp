@@ -9,6 +9,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {Ionicons} from '@expo/vector-icons'
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import CustomModes from "../screens/CustomModes";
 
 
 
@@ -58,6 +59,11 @@ export default function AppNavigation({AppState}) {
                     tabBarButton: () => null
                 }}>
                     {props => <InstalledModes {...props} AppState={AppState}></InstalledModes>}
+                </Tab.Screen>
+                <Tab.Screen name="Custom Modes" options={{
+                    tabBarButton: () => null
+                }}>
+                    {props => <CustomModes {...props} AppState={AppState}></CustomModes>}
                 </Tab.Screen>
             </Tab.Navigator>
         </NavigationContainer>

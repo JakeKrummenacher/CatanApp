@@ -11,7 +11,7 @@ export default function GameModes({AppState, navigation}){
     return(
         <View>
             <Button style={style} title="Pre-Installed Game Modes" onPress={() => navigation.navigate("Installed Modes")}></Button>
-            <Button style={style} title="Custom Game Modes"></Button>
+            <Button style={style} title="Custom Game Modes" onPress={() => navigation.navigate("Custom Modes")}></Button>
         </View>
     )
 }
