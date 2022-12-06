@@ -8,7 +8,7 @@ export default function CustomModes({AppState, navigation}) {
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
-        axios.get("http://192.168.0.41:8000/api/gameBoards")
+        axios.get("http://localhost:8000/api/gameBoards")
         .then((res) => {
             let unsortedBoards = (res.data.gameBoards);
             const sortedBoards = unsortedBoards.sort((a, b) => {

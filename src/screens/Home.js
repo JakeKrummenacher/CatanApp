@@ -19,7 +19,7 @@ export default function Home({AppState, navigation}) {
             tempHexes[i] = currentHex;
         }
         setHexagons(tempHexes);
-    }, [currentBoard])
+    }, [])
 
 
     const style = {
@@ -67,7 +67,7 @@ export default function Home({AppState, navigation}) {
                     text: "OK",
                     onPress: boardName => {
                         let boardObj = {name: boardName, values: tempValues}
-                        axios.post("http://192.168.0.41:8000/api/gameBoards", boardObj)
+                        axios.post("http:localhost:8000/api/gameBoards", boardObj)
                     }
                 }
             ],
