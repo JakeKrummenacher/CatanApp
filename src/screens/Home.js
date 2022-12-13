@@ -8,6 +8,7 @@ export default function Home({AppState, navigation}) {
     const {hexagons, setHexagons} = AppState;
     const {singleHex, setSingleHex} = AppState;
     const {currentBoard, setCurrentBoard} = AppState;
+    const {oceanColor, woodColor, brickColor, wheatColor, sheepColor, oreColor, desertColor, goldColor} = AppState;
 
     
     
@@ -54,20 +55,44 @@ export default function Home({AppState, navigation}) {
             let tempHex = {...hexagons[i]};
             tempValues.push(tempHex.fill)
         }
+        
         Alert.prompt(
             "Board Name",
             "Name your masterpiece!",
             [
                 {
                     text: "Cancel",
-                    onPress: () => navigation.navigate("Home"),
+                    onPress: () => {
+                        let easyMode = [];
+                        for (let i = 0; i < tempValues.length; i++) {
+                            if (tempValues[i] === oceanColor) {
+                                easyMode.push("oceanColor")
+                            } else if (tempValues[i] === woodColor) {
+                                easyMode.push("woodColor")
+                            } else if (tempValues [i] === brickColor) {
+                                easyMode.push("brickColor")
+                            } else if (tempValues[i] === sheepColor) {
+                                easyMode.push("sheepColor")
+                            } else if (tempValues[i] === wheatColor) {
+                                easyMode.push("wheatColor")
+                            } else if (tempValues[i] === oreColor) {
+                                easyMode.push("oreColor")
+                            } else if (tempValues[i] === desertColor) {
+                                easyMode.push("desertColor")
+                            } else if (tempValues[i] === goldColor) {
+                                easyMode.push("goldColor")
+                            }
+                        }
+                        console.log(easyMode);
+                        navigation.navigate("Home");
+                    },
                     style: "cancel"
                 },
                 {
                     text: "OK",
                     onPress: boardName => {
                         let boardObj = {name: boardName, values: tempValues}
-                        axios.post("http:localhost:8000/api/gameBoards", boardObj)
+                        axios.post("http://54.215.140.17/api/gameBoards", boardObj)
                     }
                 }
             ],
@@ -82,9 +107,8 @@ export default function Home({AppState, navigation}) {
                         style={{  display: "flex",
                         position: "absolute",
                         left: -270,
-                        top: 0,
-                        minHeight: 1200,
-                        minWidth: 1200
+                        margin: "auto",
+                        top: 0
                     }}>
                 <ScrollView horizontal={true} minWidth={1200}>
                     <HexGrid style={style} width={1200} height={800} viewBox="-9.5 -16 100 100">

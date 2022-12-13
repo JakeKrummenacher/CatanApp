@@ -5,6 +5,9 @@ import Edit from "../screens/Edit";
 import GameModes from "../screens/GameModes";
 import Settings from "../screens/Settings";
 import InstalledModes from "../screens/InstalledModes";
+import EditBoard from "../screens/EditBoard";
+import EditCustom from "../screens/EditCustom";
+import EditColor from "../screens/EditColor";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {Ionicons} from '@expo/vector-icons'
@@ -64,6 +67,21 @@ export default function AppNavigation({AppState}) {
                     tabBarButton: () => null
                 }}>
                     {props => <CustomModes {...props} AppState={AppState}></CustomModes>}
+                </Tab.Screen>
+                <Tab.Screen name="Edit Board" options={{
+                    tabBarButton: () => null
+                }}>
+                    {props => <EditBoard {...props} AppState={AppState}></EditBoard>}
+                </Tab.Screen>
+                <Tab.Screen name="Edit Custom" options={{
+                    tabBarButton: () => null
+                }}>
+                    {props => <EditCustom {...props} AppState={AppState}></EditCustom>}
+                </Tab.Screen>
+                <Tab.Screen name="Edit Color" options={{
+                    tabBarButton: () => null
+                }}>
+                    {props => <EditColor {...props} AppState={AppState}></EditColor>}
                 </Tab.Screen>
             </Tab.Navigator>
         </NavigationContainer>

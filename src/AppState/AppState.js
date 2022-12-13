@@ -3,19 +3,23 @@ import AppNavigation from "../AppNavigation/AppNavigation";
 import { BleManager } from "react-native-ble-plx";
 
 
+
 export default function AppState() {
     const [colorArray, setColorArray] = useState([]);
     const [singleHex, setSingleHex] = useState({});
-    const [currentColor, setCurrentColor] = useState("")
-    
-    const oceanColor = "rgba(0, 100, 255, 0.7)";
-    const woodColor = "rgb(0, 100, 0)";
-    const brickColor = "rgb(200, 0, 0)";
-    const sheepColor = "rgb(0, 190, 30)";
-    const wheatColor = "rgb(255, 255, 0)";
-    const oreColor = "rgb(100, 100, 100)";
-    const goldColor = "rgb(200, 190, 100)";
-    const desertColor = "white";
+    const [currentColor, setCurrentColor] = useState("");
+    const [boardId, setBoardId] = useState();
+    const [board, setBoard] = useState({});
+    const [currentColorName, setCurrentColorName] = useState("");
+
+    const [oceanColor, setOceanColor] = useState("rgba(0, 100, 255, 0.7)");
+    const [woodColor, setWoodColor] = useState("rgb(0, 100, 0)");
+    const [brickColor, setBrickColor] = useState("rgb(200, 0, 0)");
+    const [sheepColor, setSheepColor] = useState("rgb(0, 190, 30)");
+    const [wheatColor, setWheatColor] = useState("rgb(255, 255, 0)");
+    const [oreColor, setOreColor] = useState("rgb(100, 100, 100)");
+    const [goldColor, setGoldColor] = useState("rgb(200, 190, 100)");
+    const [desertColor, setDesertColor] = useState("white");
     
     const [currentBoard, setCurrentBoard] = useState([oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, desertColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, woodColor, oceanColor, brickColor, oceanColor, sheepColor, oceanColor, wheatColor, oceanColor, oreColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, goldColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor]);
     
@@ -89,24 +93,22 @@ export default function AppState() {
     
     
     const AppState = {
-        colorArray,
-        setColorArray,
-        hexagons,
-        setHexagons,
-        singleHex,
-        setSingleHex,
-        currentBoard,
-        setCurrentBoard,
-        oceanColor,
-        woodColor,
-        brickColor,
-        wheatColor,
-        sheepColor,
-        oreColor,
-        goldColor,
-        desertColor,
-        currentColor,
-        setCurrentColor
+        colorArray, setColorArray,
+        hexagons, setHexagons,
+        singleHex, setSingleHex,
+        currentBoard, setCurrentBoard,
+        oceanColor, setOceanColor,
+        woodColor, setWoodColor,
+        brickColor, setBrickColor,
+        wheatColor, setWheatColor,
+        sheepColor, setSheepColor,
+        oreColor, setOreColor,
+        goldColor, setGoldColor,
+        desertColor, setDesertColor,
+        currentColor, setCurrentColor,
+        boardId, setBoardId,
+        board, setBoard,
+        currentColorName, setCurrentColorName
     };
 
     return (
