@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AppNavigation from "../AppNavigation/AppNavigation";
-import { BleManager } from "react-native-ble-plx";
+import { useWindowDimensions } from "react-native";
+import { isTablet } from 'react-native-device-detection'
 
 
 
 export default function AppState() {
+
     const [colorArray, setColorArray] = useState([]);
     const [singleHex, setSingleHex] = useState({});
     const [currentColor, setCurrentColor] = useState("");
     const [boardId, setBoardId] = useState();
     const [board, setBoard] = useState({});
     const [currentColorName, setCurrentColorName] = useState("");
+    const [bluetoothAllowed, setBluetoothAllowed] = useState(false);
 
     const [oceanColor, setOceanColor] = useState("rgba(0, 100, 255, 0.7)");
     const [woodColor, setWoodColor] = useState("rgb(0, 100, 0)");
@@ -22,7 +25,21 @@ export default function AppState() {
     const [desertColor, setDesertColor] = useState("white");
     
     const [currentBoard, setCurrentBoard] = useState([oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, desertColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, woodColor, oceanColor, brickColor, oceanColor, sheepColor, oceanColor, wheatColor, oceanColor, oreColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, goldColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor, oceanColor]);
-    
+    const [rotation, setRotation] = useState(0);
+
+    const windowDimensions = useWindowDimensions();
+
+    useEffect(() => {
+            if (isTablet){
+                if(windowDimensions.width > windowDimensions.height){
+                    setRotation(90);
+                } else {
+                    setRotation(0)
+                }
+            }
+
+    }, [windowDimensions, isTablet])
+
     const [hexagons, setHexagons] = useState([
         {id: 0, q: 0, r: 0, s: 0, fill: "white"},
         {id: 1, q: 0, r: 1, s: 0, fill: "white"},
@@ -90,7 +107,8 @@ export default function AppState() {
         {id: 63, q: 6, r: 3, s: 0, fill: "white"},
         {id: 64, q: 6, r: 4, s: 0, fill: "white"},
     ]);
-    
+
+
     
     const AppState = {
         colorArray, setColorArray,
@@ -108,7 +126,9 @@ export default function AppState() {
         currentColor, setCurrentColor,
         boardId, setBoardId,
         board, setBoard,
-        currentColorName, setCurrentColorName
+        currentColorName, setCurrentColorName,
+        bluetoothAllowed, setBluetoothAllowed,
+        rotation, setRotation
     };
 
     return (

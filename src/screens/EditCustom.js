@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, View } from "react-native";
+import { Button, View, Dimensions } from "react-native";
 import { HexGrid, Layout, Hexagon, Text} from "react-native-hexgrid";
 
 export default function EditCustom({AppState, navigation}){
@@ -20,19 +20,38 @@ export default function EditCustom({AppState, navigation}){
 
     const hexStyle = {strokeWidth: 0, fontSize: 2, fill: "white"};
 
+    const screenWidth = Dimensions.get("window").width;
+    const screenHeight = Dimensions.get("window").height;
+
+    const aspectRatio = screenWidth / screenHeight;
+    const viewBoxX = aspectRatio * 50;
+    const viewBoxY = 50;
+
     return (
-    <View minHeight={0} minWidth={0} 
-                style={{  display: "flex",
-                position: "absolute",
-                left: -270,
-                top: 0,
-                minHeight: 1200,
-                minWidth: 1200
-            }}>
-        <View horizontal={true} minWidth={1200}>
-            <Text style={{position: "relative", left: 20, fontSize: 21, backgroundColor: "white", paddingLeft: 300, paddingTop:50}}>Choose a new color for your Hex</Text>
-            <HexGrid style={{backgroundColor: "white"}} width={1200} height={800} viewBox="-22 -35 100 100">
-                <Layout size={{x:6, y:6}} flat={true} spacing={1.1} origin={{x:0, y:0}}>
+    <View style={{ flex: 1 }}>
+        <View
+        style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+        }}
+        >
+        <Text
+            style={{
+            fontSize: 21,
+            backgroundColor: "white",
+            marginBottom: 20,
+            }}
+        >
+            Choose a new color for your Hex
+        </Text>
+        <HexGrid
+            style={{ backgroundColor: "white" }}
+            width={screenWidth}
+            height={screenHeight}
+            viewBox={`-${viewBoxX} -${viewBoxY} ${viewBoxX * 2} ${viewBoxY * 2}`}
+        >
+            <Layout size={{x:6, y:6}} flat={true} spacing={1.1} origin={{x:0, y:0}}>
                     <Hexagon onPress={(e) => {chooseColor(oceanColor)}} style={{stroke: "black", strokeWidth: .3}} id={0} fill={oceanColor} q={0} r={-2} s={0}>
                         <Text style={hexStyle}>Ocean</Text>
                     </Hexagon>
@@ -58,7 +77,7 @@ export default function EditCustom({AppState, navigation}){
                         <Text style={{strokeWidth: 0, fontSize: 2, fill: "black"}}>Desert</Text>
                     </Hexagon>
                 </Layout>
-            </HexGrid>
+        </HexGrid>
         </View>
     </View>
     );

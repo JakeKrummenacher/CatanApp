@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View, Button, ScrollView } from "react-native";
 import ColorPicker from "react-native-wheel-color-picker";
 import EditColor from "./EditColor";
 
@@ -39,6 +39,17 @@ export default function Settings({ AppState, navigation }) {
         navigation.navigate("Edit Color")
     }
 
+    const restoreDefaults = () => {
+        setOceanColor("rgba(0, 100, 255, 0.7)");
+        setWoodColor("rgb(0, 100, 0)");
+        setBrickColor("rgb(200, 0, 0)");
+        setSheepColor("rgb(0, 190, 30)");
+        setWheatColor("rgb(255, 255, 0)");
+        setOreColor("rgb(100, 100, 100)");
+        setDesertColor("white");
+        setGoldColor("rgb(200, 190, 100)");
+    }
+
     return (
         <View style={{
             display: "flex",
@@ -48,7 +59,7 @@ export default function Settings({ AppState, navigation }) {
             alignItems: "center"
         }}>
             <Text style={{fontSize: 20, marginTop: 20}}>Choose a Resource to Pick a New Color</Text>
-            <View style={{marginTop: 20}}>
+            <ScrollView style={{marginTop: 20}}>
                 <TouchableOpacity style={buttonStyle} onPress={(e)=> editColor("Ocean")}>
                     <Text style={textStyle}>Ocean</Text>
                     <TouchableOpacity style={{width: 30, height: 30, backgroundColor: oceanColor, borderRadius: "50%"}}></TouchableOpacity>
@@ -81,7 +92,8 @@ export default function Settings({ AppState, navigation }) {
                     <Text style={textStyle}>Gold</Text>
                     <TouchableOpacity style={{width: 30, height: 30, backgroundColor: goldColor, borderRadius: "50%"}}></TouchableOpacity>
                 </TouchableOpacity>
-            </View>
+                <Button style={{height: 200}} title={"Restore Defaults"} onPress={(e)=> restoreDefaults()}></Button>
+            </ScrollView>
         </View>
     )
 }

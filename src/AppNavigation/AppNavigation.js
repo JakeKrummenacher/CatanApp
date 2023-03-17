@@ -1,5 +1,5 @@
 import React from "react";
-import { NavigationContainer, TabActions, useNavigation } from "@react-navigation/native";
+import { NavigationContainer} from "@react-navigation/native";
 import Home from "../screens/Home";
 import Edit from "../screens/Edit";
 import GameModes from "../screens/GameModes";
@@ -10,7 +10,6 @@ import EditCustom from "../screens/EditCustom";
 import EditColor from "../screens/EditColor";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import {Ionicons} from '@expo/vector-icons'
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import CustomModes from "../screens/CustomModes";
 
