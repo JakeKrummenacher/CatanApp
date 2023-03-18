@@ -44,19 +44,38 @@ export default function InstalledModes({AppState, navigation}) {
         marginLeft: "auto",
         alignItems: "center"
     }
+    const buttonBox = {
+        marginTop: 10
+    }
 
     return(
         <ScrollView style={{display: "flex", flexDirection: "column"}}>
             <Text style={{alignSelf: "center", fontSize: 18, margin: 10}}>Tap a board name to activate it</Text>
             <View style={buttons}>
-                <Button onPress={(e) => activateBoard(gameArrays["base"])} title={"Base Catan 3-4 Players"}></Button>
-                <Button onPress={(e) => activateBoard(gameArrays["baseExtend"])} title={"Base Catan 5-6 Players"}></Button>
-                <Button onPress={(e) => activateBoard(gameArrays["fourIslands"])} title={"Four Islands"}></Button>
-                <Button onPress={(e) => activateBoard(gameArrays["sixIslands"])} title={"Six Islands"}></Button>
-                <Button onPress={(e) => activateBoard(gameArrays["newShores"])} title={"New Shores 3-4 Players"}></Button>
-                <Button onPress={(e) => activateBoard(gameArrays["newShoresExtend"])} title={"New Shores 5-6 Players"}></Button>
-                <Button onPress={(e) => activateBoard(gameArrays["catanUnlimited"])} title={"Catan Unlimited"}></Button>
-                <Button onPress={(e) => activateBoard(gameArrays["catanUnlimitedExtend"])} title={"Catan Unlimited Extended"}></Button>
+                <View style={buttonBox}>
+                    <Button onPress={(e) => activateBoard(gameArrays["base"])} title={"Base Catan 3-4 Players"}></Button>
+                </View>
+                <View style={buttonBox}>
+                    <Button onPress={(e) => activateBoard(gameArrays["baseExtend"])} title={"Base Catan 5-6 Players"}></Button>
+                </View>
+                <View style={buttonBox}>
+                    <Button onPress={(e) => activateBoard(gameArrays["fourIslands"])} title={"Four Islands"}></Button>
+                </View>
+                <View style={buttonBox}>
+                    <Button onPress={(e) => activateBoard(gameArrays["sixIslands"])} title={"Six Islands"}></Button>
+                </View>
+                <View style={buttonBox}>
+                    <Button onPress={(e) => activateBoard(gameArrays["newShores"])} title={"New Shores 3-4 Players"}></Button>
+                </View>
+                <View style={buttonBox}>
+                    <Button onPress={(e) => activateBoard(gameArrays["newShoresExtend"])} title={"New Shores 5-6 Players"}></Button>
+                </View>
+                <View style={buttonBox}>
+                    <Button onPress={(e) => activateBoard(gameArrays["catanUnlimited"])} title={"Catan Unlimited"}></Button>
+                </View>
+                <View style={buttonBox}>
+                    <Button onPress={(e) => activateBoard(gameArrays["catanUnlimitedExtend"])} title={"Catan Unlimited Extended"}></Button>
+                </View>
             </View>
         </ScrollView>
     )

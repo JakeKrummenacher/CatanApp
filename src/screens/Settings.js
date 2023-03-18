@@ -51,49 +51,52 @@ export default function Settings({ AppState, navigation }) {
     }
 
     return (
-        <View style={{
+        <ScrollView contentContainerStyle={{
             display: "flex",
             width: 350,
             marginLeft: "auto",
             marginRight: "auto",
-            alignItems: "center"
+            alignItems: "center",
+            height: 800
         }}>
             <Text style={{fontSize: 20, marginTop: 20}}>Choose a Resource to Pick a New Color</Text>
-            <ScrollView style={{marginTop: 20}}>
+            <ScrollView style={{marginTop: 20, maxHeight: 800}}>
                 <TouchableOpacity style={buttonStyle} onPress={(e)=> editColor("Ocean")}>
                     <Text style={textStyle}>Ocean</Text>
-                    <TouchableOpacity style={{width: 30, height: 30, backgroundColor: oceanColor, borderRadius: "50%"}}></TouchableOpacity>
+                    <TouchableOpacity style={{width: 30, height: 30, backgroundColor: oceanColor, borderRadius: 50}}></TouchableOpacity>
                 </TouchableOpacity>
                 <TouchableOpacity style={buttonStyle} onPress={(e)=> editColor("Wood")}>
                     <Text style={textStyle}>Wood</Text>
-                    <TouchableOpacity style={{width: 30, height: 30, backgroundColor: woodColor, borderRadius: "50%"}}></TouchableOpacity>
+                    <TouchableOpacity style={{width: 30, height: 30, backgroundColor: woodColor, borderRadius: 50}}></TouchableOpacity>
                 </TouchableOpacity>
                 <TouchableOpacity style={buttonStyle} onPress={(e)=> editColor("Brick")}>
                     <Text style={textStyle}>Brick</Text>
-                    <TouchableOpacity style={{width: 30, height: 30, backgroundColor: brickColor, borderRadius: "50%"}}></TouchableOpacity>
+                    <TouchableOpacity style={{width: 30, height: 30, backgroundColor: brickColor, borderRadius: 50}}></TouchableOpacity>
                 </TouchableOpacity>
                 <TouchableOpacity style={buttonStyle} onPress={(e)=> editColor("Wheat")}>
                     <Text style={textStyle}>Wheat</Text>
-                    <TouchableOpacity style={{width: 30, height: 30, backgroundColor: wheatColor, borderRadius: "50%"}}></TouchableOpacity>
+                    <TouchableOpacity style={{width: 30, height: 30, backgroundColor: wheatColor, borderRadius: 50}}></TouchableOpacity>
                 </TouchableOpacity>
                 <TouchableOpacity style={buttonStyle} onPress={(e)=> editColor("Sheep")}>
                     <Text style={textStyle}>Sheep</Text>
-                    <TouchableOpacity style={{width: 30, height: 30, backgroundColor: sheepColor, borderRadius: "50%"}}></TouchableOpacity>
+                    <TouchableOpacity style={{width: 30, height: 30, backgroundColor: sheepColor, borderRadius: 50}}></TouchableOpacity>
                 </TouchableOpacity>
                 <TouchableOpacity style={buttonStyle} onPress={(e)=> editColor("Ore")}>
                     <Text style={textStyle}>Ore</Text>
-                    <TouchableOpacity style={{width: 30, height: 30, backgroundColor: oreColor, borderRadius: "50%"}}></TouchableOpacity>
+                    <TouchableOpacity style={{width: 30, height: 30, backgroundColor: oreColor, borderRadius: 50}}></TouchableOpacity>
                 </TouchableOpacity>
                 <TouchableOpacity style={buttonStyle} onPress={(e)=> editColor("Desert")}>
                     <Text style={textStyle}>Desert</Text>
-                    <TouchableOpacity style={{width: 30, height: 30, backgroundColor: desertColor, borderRadius: "50%"}}></TouchableOpacity>
+                    <TouchableOpacity style={{width: 30, height: 30, backgroundColor: desertColor, borderRadius: 50}}></TouchableOpacity>
                 </TouchableOpacity>
                 <TouchableOpacity style={buttonStyle} onPress={(e)=> editColor("Gold")}>
                     <Text style={textStyle}>Gold</Text>
-                    <TouchableOpacity style={{width: 30, height: 30, backgroundColor: goldColor, borderRadius: "50%"}}></TouchableOpacity>
+                    <TouchableOpacity style={{width: 30, height: 30, backgroundColor: goldColor, borderRadius: 50}}></TouchableOpacity>
                 </TouchableOpacity>
-                <Button style={{height: 200}} title={"Restore Defaults"} onPress={(e)=> restoreDefaults()}></Button>
+                <View style={{marginTop: 30}}>
+                    <Button style={{height: 200}} title={"Restore Defaults"} onPress={(e)=> restoreDefaults()}></Button>
+                </View>
             </ScrollView>
-        </View>
+        </ScrollView>
     )
 }

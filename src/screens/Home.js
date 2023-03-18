@@ -10,7 +10,6 @@ export default function Home({AppState, navigation}) {
     const {currentBoard, setCurrentBoard} = AppState;
     const {oceanColor, woodColor, brickColor, wheatColor, sheepColor, oreColor, desertColor, goldColor} = AppState;
     const {rotation, setRotation } = AppState
-    
 
     useEffect(() => {
         let tempHexes = [...hexagons];

@@ -21,6 +21,8 @@
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleURLTypes</key>
+    <string>Our app uses bluetooth to find, connect and transfer data between different devices</string>
+    <key>NSBluetoothAlwaysUsageDescription</key>
     <array>
       <dict>
         <key>CFBundleURLSchemes</key>
